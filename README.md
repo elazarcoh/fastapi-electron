@@ -1,142 +1,76 @@
-![Electron JS Python Fast API](https://raw.githubusercontent.com/gnoviawan/fast-api-electron-js/main/public/assets/media/logo/electron-fastapi.png)
+<h1 align="center">electron-app</h1>
 
-# Electron JS x Python Fast API
-> Modern web UI x Python FAST API
+<p align="center">An Electron application with Vue3 and TypeScript</p>
 
-## Preview
-![Fast API Electron JS Preview](https://raw.githubusercontent.com/gnoviawan/fast-api-electron-js/main/public/assets/media/logo/python-electronjs.gif)
+<p align="center">
+<img src="https://img.shields.io/github/package-json/dependency-version/alex8088/electron-vite-boilerplate/dev/electron" alt="electron-version">
+<img src="https://img.shields.io/github/package-json/dependency-version/alex8088/electron-vite-boilerplate/dev/electron-vite" alt="electron-vite-version" />
+<img src="https://img.shields.io/github/package-json/dependency-version/alex8088/electron-vite-boilerplate/dev/electron-builder" alt="electron-builder-version" />
+<img src="https://img.shields.io/github/package-json/dependency-version/alex8088/electron-vite-boilerplate/dev/vite" alt="vite-version" />
+<img src="https://img.shields.io/github/package-json/dependency-version/alex8088/electron-vite-boilerplate/dev/vue" alt="vue-version" />
+<img src="https://img.shields.io/github/package-json/dependency-version/alex8088/electron-vite-boilerplate/dev/typescript" alt="typescript-version" />
+</p>
 
-
-
-## Prerequisite
-
-- Working Python environment (virtual environment is recommended), Python 3
-- Know how to use Node.js command
-
-
+<p align='center'>
+<img src='./build/electron-vite-vue-ts.png'/>
+</p>
 
 ## Features
 
- 1. Python Backend - do as you wish with python, do AI / ML / etc and send those data to modern web UI
- 2. Cross Platform APP using web UI
+- 💡 Optimize asset handling
+- 🚀 Fast HMR for renderer processes
+- 🔥 Hot reloading for main process and preload scripts
+- 🔌 Easy to debug
+- 🔒 Compile to v8 bytecode to protect source code
 
+## Getting Started
 
+Read [documentation](https://electron-vite.org/) for more details.
 
-## Installing / Getting started
+- [Configuring](https://electron-vite.org/config/)
+- [Development](https://electron-vite.org/guide/dev.html)
+- [Asset Handling](https://electron-vite.org/guide/assets.html)
+- [HMR](https://electron-vite.org/guide/hmr.html) & [Hot Reloading](https://electron-vite.org/guide/hot-reloading.html)
+- [Debugging](https://electron-vite.org/guide/debugging.html)
+- [Source code protection](https://electron-vite.org/guide/source-code-protection.html)
+- [Distribution](https://electron-vite.org/guide/distribution.html)
+- [Troubleshooting](https://electron-vite.org/guide/troubleshooting.html)
 
-clone this git
+You can also use the [create-electron](https://github.com/alex8088/quick-start/tree/master/packages/create-electron) tool to scaffold your project for other frameworks (e.g. `React`, `Svelte` or `Solid`).
 
-```shell
-git clone https://github.com/gnoviawan/fast-api-electron-js.git
+## Recommended IDE Setup
+
+- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
+
+## Project Setup
+
+### Install
+
+```bash
+$ npm install
 ```
 
+### Development
 
-
-## Initial Configuration
-
-change directory to cloned git
-
-```shell
-cd fast-api-electron-js
+```bash
+$ npm run dev
 ```
 
-install all python dependencies
+### Build
 
-```shell
-npm run py-install
+```bash
+# For windows
+$ npm run build:win
+
+# For macOS
+$ npm run build:mac
+
+# For Linux
+$ npm run build:linux
 ```
 
-install all node js dependencies
+## Examples
 
-```shell
-npm install
-```
-
-
-
-## Developing
-
-#### Directory Structure :
-
-`engine/` : a python directory for Fast API, create/modify all python module there, keep the `api.py` file name if you want to easily building the app later.
-
-`public/`: all frontend related files
-
-`public/assets/js/python.js`: is responsible to communicate between our frontend and backend.
-
-`public/assets/js/main.js`: electron main window
-
-#### Preview your Application :
-
-run this command to preview your app
-
-```shell
-npm run electron-dev
-```
-
-
-
-## Deploying / Publishing
-
-#### Building Python :
-
-before we building our app we have to build our Python FastAPI to .exe file ( windows ) or other executable format for each OS using PyInstaller and then call our Python Fast api as a child process inside electron js.
-
-run this command to build python using `PyInstaller` library
-
-please adjust the `api.spec` if you want to modify the build process or icon, please refer to the [PyInstaller documentation](https://pyinstaller.readthedocs.io/en/stable/spec-files.html)
-
-```shell
-npm run py-build
-```
-
-also if you are not using Windows change this code inside `public/assets/js/main.js` to another OS executable format ( not tested )
-
-```javascript
-const  API_PROD_PATH = path.join(process.resourcesPath, "../lib/api/api.exe")
-```
-#### Build the application :
-
-after we build our fast API it's time to build our main APP, run this command to build it
-
-```shell
-npm run electron-build
-```
-
-our app are published to this path `dist`
-if you want to change the build options modify this config file `electron-builder.config.json` more about the options please check [electron-builder](https://www.electron.build/) documentation
-
-
-
-## All Reference Links for this project
-
-#### Server / Backend API ( Python )
-
-[Python Fast API](https://fastapi.tiangolo.com/) = main package that create our API backend
-
-[uvicorn](https://www.uvicorn.org/) = ASGI Python Server
-
-#### Middleware (Javascript)
-
-[Axios JS](https://axios-http.com/docs/intro) = package to communicate beetwen Python and Frontend
-
-#### Frontend ( HTML, CSS, Javascript )
-
-[Electron JS](https://www.electronjs.org/) = to create standalone application
-
-[Tabler](https://tabler.io/) = Front end UI Kit / Framework
-
-#### Utility
-
-[Electron Builder](https://www.electron.build/) = packate to build our Electron APP
-
-[Electron Reloader](https://www.npmjs.com/package/electron-reloader) = to automatic reload our Electron APP when in development stage
-
-[Python Shell](https://github.com/extrabacon/python-shell) = to create Python shell inside Node.js Application, usefull when we in development stage
-
-[PyInstaller](https://pyinstaller.readthedocs.io/en/stable/index.html) = build our python to executable format
-
-
-
-## [Licensing](https://github.com/gnoviawan/fast-api-electron-js/blob/main/LICENSE.md)
-
+- [electron-vite-bytecode-example](https://github.com/alex8088/electron-vite-bytecode-example), source code protection
+- [electron-vite-decorator-example](https://github.com/alex8088/electron-vite-decorator-example), typescipt decorator
+- [electron-vite-worker-example](https://github.com/alex8088/electron-vite-worker-example), worker and fork
