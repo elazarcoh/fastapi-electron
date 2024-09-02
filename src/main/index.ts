@@ -7,6 +7,7 @@ import { execFile, spawn } from 'child_process'
 import readline from 'readline'
 
 
+const API_HOST = '127.80.81.1'
 const API_PROD_PATH = join(process.resourcesPath, "../lib/api/api.exe")
 const API_DEV_PATH = join(__dirname, "../../engine/api.py")
 
@@ -14,7 +15,7 @@ const API_DEV_PATH = join(__dirname, "../../engine/api.py")
 async function getPortFree() {
   return new Promise(res => {
     const srv = net.createServer();
-    srv.listen(0, 'localhost', () => {
+    srv.listen(0, API_HOST, () => {
       const address = srv.address();
       if (address === null || typeof address === 'string') {
         throw new Error('Server address is not available');
@@ -33,11 +34,12 @@ function startAPI(port) {
 
     try {
 
-      const proc = spawn(python, [API_DEV_PATH, `--port=${port}`], {
+      const proc = spawn(python, [API_DEV_PATH], {
         windowsHide: true,
         env: {
           ...process.env,
           PORT: port.toString(),
+          HOST: API_HOST,
           PYTHONUNBUFFERED: '1'
         }
       });
@@ -92,7 +94,8 @@ function startApp(port) {
       return { action: 'deny' }
     })
 
-    mainWindow.loadURL(`http://localhost:${port}`)
+    // mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
+    mainWindow.loadURL(`http://${API_HOST}:${port}`)
   }
 
   // This method will be called when Electron has finished
