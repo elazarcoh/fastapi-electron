@@ -1,10 +1,11 @@
+import os
 from pathlib import Path
+
+from components.app import App
 from fastapi import FastAPI
 from fastapi.responses import FileResponse, HTMLResponse
-import os
 from seamless import render
-from seamless.middlewares import ASGIMiddleware
-from components.app import App
+from seamless.extra.transports.socketio.middleware import SocketIOMiddleware
 
 HERE = Path(__file__).parent
 
@@ -18,7 +19,7 @@ if PORT is None:
 PORT = int(PORT)
 
 app = FastAPI()
-app.add_middleware(ASGIMiddleware)
+app.add_middleware(SocketIOMiddleware)
 
 
 @app.get("/static/{file_path:path}")
